@@ -1,0 +1,9 @@
+.number-column {
+    text-align: right;
+}
+
+@media (min-width: 666px) {
+    .third-column {
+      width: 75%;
+    }
+}
