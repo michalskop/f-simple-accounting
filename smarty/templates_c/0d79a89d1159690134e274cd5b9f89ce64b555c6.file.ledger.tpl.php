@@ -1,19 +1,19 @@
-<?php /* Smarty version Smarty-3.0.7, created on 2015-06-03 11:33:07
+<?php /* Smarty version Smarty-3.0.7, created on 2015-06-04 05:14:53
          compiled from "../../smarty/templates/ledger.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:883795575556ec9d3aecc86-78559288%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:169089955556fc2adaefd77-75986908%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '0d79a89d1159690134e274cd5b9f89ce64b555c6' => 
     array (
       0 => '../../smarty/templates/ledger.tpl',
-      1 => 1433323936,
+      1 => 1433381949,
       2 => 'file',
     ),
     '1d643d4fde4115da95a64159fde39b1561103f00' => 
     array (
       0 => '../../smarty/templates/main.tpl',
-      1 => 1433317971,
+      1 => 1433356775,
       2 => 'file',
     ),
     '20f9e0d5e8cc2f2f272900656f15e2f9cc1a49dc' => 
@@ -23,7 +23,7 @@ $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '883795575556ec9d3aecc86-78559288',
+  'nocache_hash' => '169089955556fc2adaefd77-75986908',
   'function' => 
   array (
   ),
@@ -43,7 +43,7 @@ $_smarty_tpl->decodeProperties(array (
 ">
     <meta name="author" content="<?php echo $_smarty_tpl->getVariable('text')->value['author'];?>
 ">
-    <link type="image/x-icon" href="../image/favicon.ico" rel="shortcut icon">
+    <link type="image/x-icon" href="../favicon.ico" rel="shortcut icon">
     
     <meta property="og:image" content="<?php echo $_smarty_tpl->getVariable('text')->value['og:image'];?>
 "/>
@@ -60,6 +60,7 @@ $_smarty_tpl->decodeProperties(array (
     <link href="../fsa.css" rel="stylesheet">
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="../jquery.stickytableheaders.min.js"></script>
     <title><?php echo $_smarty_tpl->getVariable('text')->value['title'];?>
 </title>
   </head>
@@ -80,9 +81,9 @@ $_smarty_tpl->decodeProperties(array (
     
   
     <?php $_template = new Smarty_Internal_Template("header.tpl", $_smarty_tpl->smarty, $_smarty_tpl, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null);
-$_template->properties['nocache_hash']  = '883795575556ec9d3aecc86-78559288';
+$_template->properties['nocache_hash']  = '169089955556fc2adaefd77-75986908';
 $_tpl_stack[] = $_smarty_tpl; $_smarty_tpl = $_template;?>
-<?php /* Smarty version Smarty-3.0.7, created on 2015-06-03 11:33:07
+<?php /* Smarty version Smarty-3.0.7, created on 2015-06-04 05:14:53
          compiled from "../../smarty/templates/header.tpl" */ ?>
 <nav class="navbar navbar-inverse">
   <div class="container">
@@ -176,7 +177,8 @@ if ($_smarty_tpl->_count($_from) > 0){
                     <?php }?>
                 </h3>
                 
-                <table class="ledger-account table table-bordered table-hover">
+                <div class="table-responsive">
+                <table class="table table-bordered table-hover">
                   <thead>
                     <tr><th><?php echo $_smarty_tpl->getVariable('text')->value['credit'];?>
 <th><?php echo $_smarty_tpl->getVariable('text')->value['debit'];?>
@@ -269,6 +271,7 @@ if ($_smarty_tpl->_count($_from) > 0){
                     </tbody>
                     <?php $_smarty_tpl->tpl_vars['j'] = new Smarty_variable($_smarty_tpl->getVariable('j')->value+1, null, null);?>
                 </table>
+                </div>
             <?php }} ?>
         <?php }?>
     <?php }} ?>
@@ -280,6 +283,8 @@ if ($_smarty_tpl->_count($_from) > 0){
     
   </div>
 
+    <?php $_template = new Smarty_Internal_Template("footer.tpl", $_smarty_tpl->smarty, $_smarty_tpl, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null);
+ echo $_template->getRenderedTemplate();?><?php unset($_template);?>
     
     <!-- google analytics -->
     <script type="text/javascript">

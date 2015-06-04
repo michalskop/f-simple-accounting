@@ -212,13 +212,20 @@ foreach ($accounts as $account) {
     $accs[$account['number']] = $account;
 }
 
-
-$data = ['super' => [], 'main' => [], 'analytical' => []];
-if (isset($_REQUEST['account']) and (isset($accs[trim($_REQUEST['account'])]))) {
-    $data = sort_accounts($data, $filtered, $accs[trim($_REQUEST['account'])], $accs);
-} else {
-    foreach ($accounts as $account) {
-        $data = sort_accounts($data, $filtered, $account, $accs);
+if (isset($_REQUEST['page']) and ($_REQUEST['page'] == 'ledger')) { //ledger
+    $data = ['super' => [], 'main' => [], 'analytical' => []];
+    if (isset($_REQUEST['account']) and (isset($accs[trim($_REQUEST['account'])]))) {
+        $data = sort_accounts($data, $filtered, $accs[trim($_REQUEST['account'])], $accs);
+    } else {
+        foreach ($accounts as $account) {
+            $data = sort_accounts($data, $filtered, $account, $accs);
+        }
+    }
+} else { //journal, default
+    $data = $filtered;
+    foreach ($data as $k => $row) {
+        $data[$k]['debit_name'] = $accs[$row['debit']]['name']; 
+        $data[$k]['credit_name'] = $accs[$row['credit']]['name'];
     }
 }
 //print_r($data);

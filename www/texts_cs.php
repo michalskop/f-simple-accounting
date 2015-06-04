@@ -3,7 +3,10 @@
 * Texts (for translation)
 */
 $text = [
+    'lang' => 'cs',
+    
     'brand' => 'Účetnictví',
+    'accounting' => 'Účetnictví',
     
     
     'ledger' => 'Hlavní kniha',
@@ -20,6 +23,11 @@ $text = [
     'until' => 'do',
     'account' => 'účet',
     'tag' => 'tag',
+    
+    'ex_tag' => 'v4',
+    'ex_since' => '2015-01-16',
+    'ex_until' => '2015-11-10',
+    'ex_account' => '21',
     
     'case_row' => 'řádek',
     'case_date' => 'datum',
@@ -65,7 +73,27 @@ $text = [
     'month_11' => 'listopad',
     'month_12' => 'prosinec',
     
+    'jc_row' => 'Řádek',
+    'jc_date' => 'Datum',
+    'jc_debit' => 'Debit (MD)',
+    'jc_credit' => 'Credit (D)',
+    'jc_amount' => 'Částka',
+    'jc_description' => 'Popis',
+    'jc_currency' => 'Měna',
+    'jc_exchangerate' => 'Kurz',
+    'jc_amountczk' => 'Částka CZK',
+    'jc_tags' => 'Tagy',
+    'jc_link' => 'Link',
+    'jc_note' => 'Poznámka',
+    
+    'google_tracking_id' => '',
+    
+    
     //into settings:
     'settings_address' => 'KohoVolit.eu, Vinice 347, Plasy, CZ-33101, Česká republika, IČ: 22841890',
-    'settings_link' => 'http://kohovolit.eu'
+    'settings_link' => 'http://kohovolit.eu',
+    'settings_journal_columns' => ['row','date','debit','credit', 'amount','currency','description','exchangerate','amountczk', 'tags','link','note'],
+
+
 ];
+?>

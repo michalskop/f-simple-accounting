@@ -8,7 +8,7 @@
     <meta name="description" content="{$text['description']}">
     <meta name="keywords" content="{$text['keywords']}">
     <meta name="author" content="{$text['author']}">
-    <link type="image/x-icon" href="../image/favicon.ico" rel="shortcut icon">
+    <link type="image/x-icon" href="../favicon.ico" rel="shortcut icon">
     
     <meta property="og:image" content="{$text['og:image']}"/>
 	<meta property="og:title" content="{$text['title']}"/>
@@ -21,6 +21,7 @@
     <link href="../fsa.css" rel="stylesheet">
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="../jquery.stickytableheaders.min.js"></script>
     <title>{$text['title']}</title>
     {block name=additionalHead}{/block} 
     {block name=lastHead}{/block}
@@ -39,6 +40,7 @@
   
     {block name=body}{/block}
     {block name=footer}{/block}
+    {include "footer.tpl"}
     
 
     {block name=js}{/block}

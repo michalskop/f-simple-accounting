@@ -33,7 +33,8 @@
                     {/if}
                 </h3>
                 
-                <table class="ledger-account table table-bordered table-hover">
+                <div class="table-responsive">
+                <table class="table table-bordered table-hover">
                   <thead>
                     <tr><th>{$text['credit']}<th>{$text['debit']}<th>{$text['descript']}
                     
@@ -89,6 +90,7 @@
                     </tbody>
                     {$j=$j+1}
                 </table>
+                </div>
             {/foreach}
         {/if}
     {/foreach}

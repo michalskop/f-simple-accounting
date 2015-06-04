@@ -11,6 +11,7 @@ error_reporting(E_ALL);
 */
 function get_journal() {
     $url = "https://spreadsheets.google.com/feeds/list/1dyyZUyLlKIc1U79qCmKMU4BGKUeZsyB68i2RRSd2bXY/1/public/full?alt=json";
+    //$url = "http://localhost/michal/project/f-simple-accounting/dev/journal.json";
     $json = json_decode(file_get_contents($url));
     $data = [];
     foreach($json->feed->entry as $row) {
@@ -30,6 +31,7 @@ function get_journal() {
 */
 function get_accounts() {
     $url = "https://spreadsheets.google.com/feeds/list/1dyyZUyLlKIc1U79qCmKMU4BGKUeZsyB68i2RRSd2bXY/2/public/full?alt=json";
+    //$url = "http://localhost/michal/project/f-simple-accounting/dev/accounts.json";
     $json = json_decode(file_get_contents($url));
     $data = [];
     foreach($json->feed->entry as $row) {
@@ -124,6 +126,29 @@ function lang() {
         return 'en';
     else //default language
         return 'cs';
+}
+
+/**
+* creates api URL using known relative path
+*/
+function form_api_address() {
+    $phpself = explode('/',$_SERVER['PHP_SELF']);
+    array_pop($phpself);
+    array_pop($phpself);
+    $out = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . implode('/',$phpself) . '/api';
+    return $out;
+}
+
+/**
+*
+*/
+function clear_request() {
+    $request = [];
+    foreach ($_REQUEST as $k => $r) {
+        if (trim($r) != '')
+            $request[$k] = $r;
+    }
+    return $request;
 }
 
 //$journal = get_journal();
