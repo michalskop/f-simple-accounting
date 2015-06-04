@@ -143,9 +143,10 @@ function form_api_address() {
 *
 */
 function clear_request() {
+    $allowed = ['since','until','tag','account'];
     $request = [];
     foreach ($_REQUEST as $k => $r) {
-        if (trim($r) != '')
+        if (in_array($k,$allowed) and (trim($r) != ''))
             $request[$k] = $r;
     }
     return $request;
