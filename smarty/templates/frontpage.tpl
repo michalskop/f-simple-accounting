@@ -27,7 +27,7 @@
                             <label for="until">{$text['until']}:</label>
                             <input type="text" class="form-control" id="until" name="until" placeholder="{$text['ex_until']} ...">
                         </div>
-                        <button type="submit" class="btn btn-default">{$text['filter']} ({$text['journal']})</button>
+                        <button type="submit" class="btn btn-default">{$text['filter']} ({$text['ledger']})</button>
                     </form>
               </div>
           </div>
@@ -55,7 +55,7 @@
                             <label for="until">{$text['until']}:</label>
                             <input type="text" class="form-control" id="until" name="until" placeholder="{$text['ex_until']} ...">
                         </div>
-                        <button type="submit" class="btn btn-default">{$text['filter']} ({$text['ledger']})</button>
+                        <button type="submit" class="btn btn-default">{$text['filter']} ({$text['journal']})</button>
                     </form>
             </div>
       </div>
