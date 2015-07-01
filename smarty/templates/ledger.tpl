@@ -63,10 +63,12 @@
                                       <div class="modal-body">
                                         {foreach $row as $item}
                                           {$item_name="case_`$item@key`"}
-                                          <strong>{$text[$item_name]}</strong>:
-                                          {if strpos($item,'http') === 0}<a href="{$item}" target="_blank">{/if} {$item}
-                                          {if strpos($item,'http') === 0}</a>{/if}
-                                          <br>
+                                          {if (isset($text[$item_name]))}
+                                              <strong>{$text[$item_name]}</strong>:
+                                              {if strpos($item,'http') === 0}<a href="{$item}" target="_blank">{/if} {$item}
+                                              {if strpos($item,'http') === 0}</a>{/if}
+                                              <br>
+                                          {/if}
                                         {/foreach}
                                       </div>
                                       <div class="modal-footer">
