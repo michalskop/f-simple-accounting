@@ -12,7 +12,7 @@ $text = [
     'ledger' => 'Hlavní kniha',
     'journal' => 'Deník',
     
-    'filter' => 'Filter',
+    'filter' => 'Filtr',
     'filter_explanation' => 'Je použito filtrování:',
     
     'credit' => 'kredit (MD)',
@@ -76,7 +76,7 @@ $text = [
     'jc_row' => 'Řádek',
     'jc_date' => 'Datum',
     'jc_debit' => 'Debit (MD)',
-    'jc_credit' => 'Credit (D)',
+    'jc_credit' => 'Kredit (D)',
     'jc_amount' => 'Částka',
     'jc_description' => 'Popis',
     'jc_currency' => 'Měna',
@@ -86,14 +86,5 @@ $text = [
     'jc_link' => 'Link',
     'jc_note' => 'Poznámka',
     
-    'google_tracking_id' => '',
-    
-    
-    //into settings:
-    'settings_address' => 'KohoVolit.eu, Vinice 347, Plasy, CZ-33101, Česká republika, IČ: 22841890',
-    'settings_link' => 'http://kohovolit.eu',
-    'settings_journal_columns' => ['row','date','debit','credit', 'amount','currency','description','exchangerate','amountczk', 'tags','link','note'],
-
-
 ];
 ?>

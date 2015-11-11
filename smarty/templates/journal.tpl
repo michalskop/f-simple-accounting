@@ -20,13 +20,13 @@
             <table class="table table-bordered table-hover table-fixed">
                 <thead>
                     <tr>
-                    {foreach $text['settings_journal_columns'] as $col}
+                    {foreach $settings->journal_columns as $col}
                         {$jcname = "jc_`$col`"}
                         <th>{$text[$jcname]}
                     {/foreach}
                     {foreach $data->data as $row}
                     <tr>
-                        {foreach $text['settings_journal_columns'] as $col}
+                        {foreach $settings->journal_columns as $col}
                             {$item = $row->$col}
                             <td>
                                 {if strpos($item,'http') === 0}<a href="{$item}" target="_blank">{/if}

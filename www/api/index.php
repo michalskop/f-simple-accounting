@@ -109,8 +109,13 @@ $response['data'] = NULL;
 
 // --- Step 3: Process Request
 
+$path_to_webroot = "../";
+
+include $path_to_webroot . "common.php";
+//print_r($_REQUEST);die();
+
 global $year;
-$year = 2015; //hardcoding for now
+$year = $settings->year;
 
 /**
 * calculates sums of debits and credits for given account number
@@ -200,11 +205,9 @@ function months() {
     return ['start' => $start, 'end' => $end];
 }
 
-include "../common.php";
-//print_r($_REQUEST);die();
+
 $journal = get_journal();
 $accounts = get_accounts();
-
 $filtered = filter_journal($journal, $_REQUEST);
     //prepare accounts for easier access:
 $accs = [];
@@ -232,8 +235,6 @@ if (isset($_REQUEST['page']) and ($_REQUEST['page'] == 'ledger')) { //ledger
 $response['code'] = 'success';
 $response['data'] = $data;
 $response['status'] = $api_response_code[ $response['code'] ]['HTTP Response'];
-
-
 
 
 // --- Step 4: Deliver Response

@@ -3,3 +3,5 @@ dev/*
 webcache
 smarty/templates_c
 www/settings.php
+settings.*
+

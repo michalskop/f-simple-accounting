@@ -6,11 +6,29 @@
 error_reporting(E_ALL);
 //error_reporting(0);
 
+//get settings
+global $settings;
+$settings = json_decode(file_get_contents("../" . $path_to_webroot . "settings.json"));
+
+// put full path to Smarty.class.php
+require($settings->smarty_path);
+$smarty = new Smarty();
+$smarty->setTemplateDir('../../smarty/templates');
+$smarty->setCompileDir('../../smarty/templates_c');
+
+//get language
+$lang = lang();
+include($path_to_webroot . "texts_".$lang.".php");
+
+$smarty->assign('lang',$lang);
+$smarty->assign('settings',$settings);
+
 /**
 * reads Journal into array
 */
 function get_journal() {
-    $url = "https://spreadsheets.google.com/feeds/list/1dyyZUyLlKIc1U79qCmKMU4BGKUeZsyB68i2RRSd2bXY/1/public/full?alt=json";
+    global $settings;
+    $url = $settings->journal_url;
     //$url = "http://localhost/michal/project/f-simple-accounting/dev/journal.json";
     $json = json_decode(file_get_contents($url));
     $data = [];
@@ -30,7 +48,8 @@ function get_journal() {
 * reads Accounts into associative array
 */
 function get_accounts() {
-    $url = "https://spreadsheets.google.com/feeds/list/1dyyZUyLlKIc1U79qCmKMU4BGKUeZsyB68i2RRSd2bXY/2/public/full?alt=json";
+    global $settings;
+    $url = $settings->accounts_url;
     //$url = "http://localhost/michal/project/f-simple-accounting/dev/accounts.json";
     $json = json_decode(file_get_contents($url));
     $data = [];

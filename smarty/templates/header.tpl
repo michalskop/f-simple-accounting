@@ -18,7 +18,7 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="{$text['settings_link']}">{$text['settings_address']}</a></li>
+        <li><a href="{$settings->address_link}">{$settings->address}</a></li>
       </ul>
     </div>
   </div>

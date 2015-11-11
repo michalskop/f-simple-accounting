@@ -12,11 +12,11 @@
     
     <meta property="og:image" content="{$text['og:image']}"/>
 	<meta property="og:title" content="{$text['title']}"/>
-	<meta property="og:url" content="{$text['url']}"/>
+	<meta property="og:url" content="{$settings->app_url}"/>
 	<meta property="og:site_name" content="{$text['title']}"/>
 	<meta property="og:type" content="website"/>
 
-    <link href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.4/paper/bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.4/{$settings->bootswatch}/bootstrap.min.css" rel="stylesheet">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
     <link href="../fsa.css" rel="stylesheet">
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>

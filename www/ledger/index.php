@@ -6,18 +6,11 @@
 * 
 */
 
-include("../common.php");
+$path_to_webroot = "../";
 
-//get language
-$lang = lang();
-include("../texts_".$lang.".php");
+include($path_to_webroot . "common.php");
+
 $text['title'] = $text['ledger'];
-
-// put full path to Smarty.class.php
-require('/usr/local/lib/php/Smarty/Smarty.class.php');
-$smarty = new Smarty();
-$smarty->setTemplateDir('../../smarty/templates');
-$smarty->setCompileDir('../../smarty/templates_c');
 
 //get data
 $request = clear_request();
@@ -26,7 +19,6 @@ $r = file_get_contents(form_api_address(). "/?" . http_build_query($request));
 $data = json_decode($r);
 $request = clear_request();
 
-$smarty->assign('lang',$lang);
 $smarty->assign('text',$text);
 $smarty->assign('data',$data);
 $smarty->assign('filter',$request);
