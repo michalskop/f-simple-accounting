@@ -14,7 +14,8 @@
             <h4><i class="fa fa-info-circle"></i> {$text['filter']}</h4>
             <strong>{$text['filter_explanation']}</strong><br>
             {foreach $filter as $f}
-                {$text[$f@key]}: {$f}{if !($f@last)}, {/if}
+                {$text[$f@key]}: {$f}
+                {if !($f@last)}, {/if}
             {/foreach}
         </div>
     {/if}

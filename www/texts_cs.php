@@ -39,7 +39,8 @@ $text = [
     'case_exchangerate' => 'kurz',
     'case_amountczk' => 'množství (CZK)',
     'case_tags' => 'tagy',
-    'case_link' => 'link',
+    'case_links' => 'linky',
+    'case_documentid' => 'číslo dokladu',
     'case_note' => 'poznámka',
     
     'accounts_super' => 'Skupiny účtů',
@@ -83,7 +84,8 @@ $text = [
     'jc_exchangerate' => 'Kurz',
     'jc_amountczk' => 'Částka CZK',
     'jc_tags' => 'Tagy',
-    'jc_link' => 'Link',
+    'jc_links' => 'Linky',
+    'jc_documentid' => 'Číslo dokladu',
     'jc_note' => 'Poznámka',
     
 ];

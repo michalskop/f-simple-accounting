@@ -20,8 +20,13 @@ $smarty->setCompileDir('../../smarty/templates_c');
 $lang = lang();
 include($path_to_webroot . "texts_".$lang.".php");
 
+//get tags
+$tags = get_tags();
+
 $smarty->assign('lang',$lang);
 $smarty->assign('settings',$settings);
+$smarty->assign('tags',$tags);
+
 
 /**
 * reads Journal into array
@@ -44,6 +49,30 @@ function get_journal() {
     }
     return $data;
 }
+
+/**
+* reads Tags into associative array
+*/
+function get_tags() {
+    global $settings;
+    $url = $settings->tags_url;
+    //$url = "http://localhost/michal/project/f-simple-accounting/dev/accounts.json";
+    $json = json_decode(file_get_contents($url));
+    $data = [];
+    foreach($json->feed->entry as $row) {
+        $t = '$t';
+        $item = [];
+        foreach ($row as $key => $it) {
+            if (substr($key,0,3) == 'gsx') {
+                $item[substr($key,4)] = trim($row->$key->$t);
+            }
+        }
+        $data[trim($row->{'gsx$tag'}->$t)] = $item;
+    }
+    return $data;
+}
+
+
 /**
 * reads Accounts into associative array
 */
