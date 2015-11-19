@@ -82,11 +82,14 @@ function filter_journal($data,$filter) {
         if (isset($filter['until']) and $row['date'] > $filter['until'])
             $ok = false;
         if (isset($filter['tag'])) {
-            $tags = explode(',',$row['tags']);
+            $filter_tags = explode(',',$filter['tag']); 
+            $tags = explode(',',$row['tags']);       
             foreach ($tags as $key => $tag) 
                 $tags[$key] = sanitize(trim($tag));
-            if (!in_array($filter['tag'],$tags))
-                $ok = false;
+            foreach ($filter_tags as $filter_tag) {
+                if (!in_array($filter_tag,$tags))
+                    $ok = false;
+            }
         }
         if (isset($filter['account'])) {
                 //we have to divided it, because of accounts like '22-v4' and '22-v4e':
