@@ -15,8 +15,8 @@ $text = [
     'filter' => 'Filtr',
     'filter_explanation' => 'Je použito filtrování:',
     
-    'credit' => 'kredit (MD)',
-    'debit' => 'debit (D)',
+    'credit' => 'kredit (D)',
+    'debit' => 'debit (MD)',
     'descript' => '',
     
     'since' => 'od',
@@ -31,8 +31,8 @@ $text = [
     
     'case_row' => 'řádek',
     'case_date' => 'datum',
-    'case_credit' => 'kredit (MD)',
-    'case_debit' => 'debit (D)',
+    'case_credit' => 'kredit (D)',
+    'case_debit' => 'debit (MD)',
     'case_amount' => 'množství',
     'case_description' => 'popis',
     'case_currency' => 'měna',
@@ -47,7 +47,7 @@ $text = [
     'accounts_main' => 'Účty',
     'accounts_analytical' => 'Analytické účty',
     
-    'current_state' => 'Aktuální stav',
+    'current_state' => 'Konečný stav',
     '1_1' => 'k 1.1.',
 
     'description' => '',

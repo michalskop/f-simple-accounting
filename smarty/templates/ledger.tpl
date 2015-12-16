@@ -37,12 +37,12 @@
                 <div class="table-responsive">
                 <table class="table table-bordered table-hover">
                   <thead>
-                    <tr><th>{$text['credit']}<th>{$text['debit']}<th>{$text['descript']}
+                    <tr><th>{$text['debit']}<th>{$text['credit']}<th>{$text['descript']}
                     
                   <tbody>
                     <tr class="sums">
-                        <td class="number-column"><strong>{number_format($account->sums->credit,2)}
                         <td class="number-column"><strong>{number_format($account->sums->debit,2)}
+                        <td class="number-column"><strong>{number_format($account->sums->credit,2)}
                         <td class="third-column">
                     <tr><td colspan="3">
                         <button type="button" class="btn btn-xs" data-toggle="collapse" data-target="#collapse_{$j}">{$text['details']}</button>
@@ -51,8 +51,8 @@
                   <tbody id="collapse_{$j}" class="collapse out">
                         {foreach $account->rows as $row}
                           {if !((strpos($row->debit,'96') === 0) or (strpos($row->credit,'96') === 0))}
-                            <tr><td class="number-column">{if strpos($row->credit, $account->account->number) === 0}{number_format($row->amountczk,2)}{/if}
-                                <td class="number-column">{if strpos($row->debit, $account->account->number) === 0}{number_format($row->amountczk,2)}{/if}
+                            <tr><td class="number-column">{if strpos($row->debit, $account->account->number) === 0}{number_format($row->amountczk,2)}{/if}
+                                <td class="number-column">{if strpos($row->credit, $account->account->number) === 0}{number_format($row->amountczk,2)}{/if}
                                 <td class="third-column"><a href="#" data-toggle="modal" data-target="#modal_{$i}">{$row->date} {$row->description}</a>
                                 
                                 <div class="modal fade" id="modal_{$i}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
