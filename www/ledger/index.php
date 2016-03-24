@@ -3,7 +3,7 @@
 * General Ledger
 * parameters:
 * since, until, tag, account
-* 
+*
 */
 
 $path_to_webroot = "../";
@@ -15,6 +15,7 @@ $text['title'] = $text['ledger'];
 //get data
 $request = clear_request();
 $request['page'] = 'ledger';
+$request['y'] = $year;
 $r = file_get_contents(form_api_address(). "/?" . http_build_query($request));
 $data = json_decode($r);
 $request = clear_request();

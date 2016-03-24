@@ -3,7 +3,7 @@
 * Journal
 * parameters:
 * since, until, tag, account
-* 
+*
 */
 
 $path_to_webroot = "../";
@@ -16,6 +16,7 @@ $text['brand'] = $text['brand'];
 //get data
 $request = clear_request();
 $request['page'] = 'journal';
+$request['y'] = $year;
 $r = file_get_contents(form_api_address(). "/?" . http_build_query($request));
 $data = json_decode($r);
 $request = clear_request();

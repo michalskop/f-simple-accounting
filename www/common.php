@@ -20,20 +20,37 @@ $smarty->setCompileDir('../../smarty/templates_c');
 $lang = lang();
 include($path_to_webroot . "texts_".$lang.".php");
 
+//get year
+global $ysettings, $year;
+if (isset($_GET['y'])) {
+    $year = $_GET['y'];
+    foreach ($settings->years as $syear){
+        if ($syear->year == $year)
+            $ysettings = $syear;
+    }
+    if (!isset($ysettings))
+        $ysettings = $settings->years[0];
+} else {
+    $year = $settings->years[0]->year;
+    $ysettings = $settings->years[0];
+}
+
 //get tags
 $tags = get_tags();
 
 $smarty->assign('lang',$lang);
 $smarty->assign('settings',$settings);
 $smarty->assign('tags',$tags);
+$smarty->assign('ysettings',$ysettings);
+$smarty->assign('year',$year);
 
 
 /**
 * reads Journal into array
 */
 function get_journal() {
-    global $settings;
-    $url = $settings->journal_url;
+    global $ysettings;
+    $url = $ysettings->journal_url;
     //$url = "http://localhost/michal/project/f-simple-accounting/dev/journal.json";
     $json = json_decode(file_get_contents($url));
     $data = [];
@@ -54,8 +71,8 @@ function get_journal() {
 * reads Tags into associative array
 */
 function get_tags() {
-    global $settings;
-    $url = $settings->tags_url;
+    global $ysettings;
+    $url = $ysettings->tags_url;
     //$url = "http://localhost/michal/project/f-simple-accounting/dev/accounts.json";
     $json = json_decode(file_get_contents($url));
     $data = [];
@@ -77,8 +94,8 @@ function get_tags() {
 * reads Accounts into associative array
 */
 function get_accounts() {
-    global $settings;
-    $url = $settings->accounts_url;
+    global $ysettings;
+    $url = $ysettings->accounts_url;
     //$url = "http://localhost/michal/project/f-simple-accounting/dev/accounts.json";
     $json = json_decode(file_get_contents($url));
     $data = [];
@@ -98,7 +115,7 @@ function get_accounts() {
 /**
 * filters Journal entries
 * @filter   array of filters
-* example: 
+* example:
 * filter = ['since' => '2015-03-01', 'until' => '2015-03-30', 'account' => '22', 'tag' => 'v4']
 * note: account '22' includes also '22-CZK'
 */
@@ -111,9 +128,9 @@ function filter_journal($data,$filter) {
         if (isset($filter['until']) and $row['date'] > $filter['until'])
             $ok = false;
         if (isset($filter['tag'])) {
-            $filter_tags = explode(',',$filter['tag']); 
-            $tags = explode(',',$row['tags']);       
-            foreach ($tags as $key => $tag) 
+            $filter_tags = explode(',',$filter['tag']);
+            $tags = explode(',',$row['tags']);
+            foreach ($tags as $key => $tag)
                 $tags[$key] = sanitize(trim($tag));
             foreach ($filter_tags as $filter_tag) {
                 if (!in_array($filter_tag,$tags))
@@ -126,7 +143,7 @@ function filter_journal($data,$filter) {
                 if (($row['debit'] != $filter['account']) and ($row['credit'] != $filter['account']))
                     $ok = false;
             } else {
-                if ((strpos($row['debit'],$filter['account']) !== 0) and (strpos($row['credit'],$filter['account']) !== 0)) {            
+                if ((strpos($row['debit'],$filter['account']) !== 0) and (strpos($row['credit'],$filter['account']) !== 0)) {
                     $ok = false;
                 }
             }
@@ -137,7 +154,7 @@ function filter_journal($data,$filter) {
         if ($ok)
             $filtered[] = $row;
     }
-    return $filtered; 
+    return $filtered;
 }
 
 /**

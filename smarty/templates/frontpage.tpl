@@ -2,11 +2,11 @@
 {block name=body}
 
     {include "header.tpl"}
-      <div class="container">  
+      <div class="container">
         <h2>{$text['ledger']}</h2>
           <div class="row">
             <div class="col-md-6">
-                <a href="../ledger" class="btn btn-primary btn-lg">{$text['ledger']}</a>
+                <a href="../ledger/?y={$year}" class="btn btn-primary btn-lg">{$text['ledger']}</a>
             </div>
             <div class="col-md-6">
                 <h4>{$text['filter']}:</h4>
@@ -28,13 +28,14 @@
                             <input type="text" class="form-control" id="until" name="until" placeholder="{$text['ex_until']} ...">
                         </div>
                         <button type="submit" class="btn btn-default">{$text['filter']} ({$text['ledger']})</button>
+                        <input type="hidden" name="y" value="{$year}">
                     </form>
               </div>
           </div>
-        
+
         <h2>{$text['journal']}</h2>
           <div class="col-md-6">
-            <a href="../journal" class="btn btn-primary btn-lg">{$text['journal']}</a>
+            <a href="../journal/?y={$year}" class="btn btn-primary btn-lg">{$text['journal']}</a>
           </div>
           <div class="col-md-6">
                 <h4>{$text['filter']}:</h4>
@@ -56,6 +57,7 @@
                             <input type="text" class="form-control" id="until" name="until" placeholder="{$text['ex_until']} ...">
                         </div>
                         <button type="submit" class="btn btn-default">{$text['filter']} ({$text['journal']})</button>
+                        <input type="hidden" name="y" value="{$year}">
                     </form>
             </div>
       </div>
