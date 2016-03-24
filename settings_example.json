@@ -1,21 +1,29 @@
 {
-    "journal_url": "https://spreadsheets.google.com/feeds/list/1dyyZUyLlKIc1U79qCmKMU4BGKUeZsyB68i2RRSd2bXY/1/public/full?alt=json",
-    "accounts_url": "https://spreadsheets.google.com/feeds/list/1dyyZUyLlKIc1U79qCmKMU4BGKUeZsyB68i2RRSd2bXY/2/public/full?alt=json",
-    
+    "years": [
+        {
+            "journal_url": "https://spreadsheets.google.com/feeds/list/1hmkRFbmlRU9t5sblsu18eLjGFEld--MNBJyu8yh5UQI/1/public/full?alt=json",
+            "accounts_url": "https://spreadsheets.google.com/feeds/list/1hmkRFbmlRU9t5sblsu18eLjGFEld--MNBJyu8yh5UQI/2/public/full?alt=json",
+            "tags_url": "https://spreadsheets.google.com/feeds/list/1hmkRFbmlRU9t5sblsu18eLjGFEld--MNBJyu8yh5UQI/3/public/full?alt=json",
+            "year": 2016
+        },
+        {
+            "journal_url": "https://spreadsheets.google.com/feeds/list/1dyyZUyLlKIc1U79qCmKMU4BGKUeZsyB68i2RRSd2bXY/1/public/full?alt=json",
+            "accounts_url": "https://spreadsheets.google.com/feeds/list/1dyyZUyLlKIc1U79qCmKMU4BGKUeZsyB68i2RRSd2bXY/2/public/full?alt=json",
+            "tags_url": "https://spreadsheets.google.com/feeds/list/1dyyZUyLlKIc1U79qCmKMU4BGKUeZsyB68i2RRSd2bXY/3/public/full?alt=json",
+            "year": 2015
+        }
+    ],
+
     "smarty_path": "/usr/local/lib/php/Smarty/Smarty.class.php",
-    
+
     "address": "KohoVolit.eu, Vinice 347, Plasy, CZ-33101, Česká republika, IČ: 22841890",
     "address_link": "http://kohovolit.eu",
-    "journal_columns": ["row","date","debit","credit", "amount","currency","description","exchangerate","amountczk", "tags","link","note"],
-    "year": 2015,
-    
+    "journal_columns": ["row","date","debit","credit", "amount","currency","description","exchangerate","amountczk", "tags","links","documentid","note"],
+
     "app_url": "http://fsa.kohovolit.eu",
-    
+
     "google_tracking_id": "",
-    
+
     "bootswatch": "paper"
-    
-   
-    
 
 }
