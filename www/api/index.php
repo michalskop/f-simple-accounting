@@ -122,25 +122,29 @@ global $year;
 function sum_side($rows,$account_number) {
     $debit = 0;
     $credit = 0;
-    $scredit = 0;
-    $sdebit = 0;
+    $scredit = 0;   //start credit
+    $sdebit = 0;    //start debit
     foreach ($rows as $row) {
-        if ($account_number == 96){
+        if (strpos($account_number,'96') === 0){
             if (strpos($row['debit'],$account_number) === 0)
                 $debit += $row['amountczk'];
             if (strpos($row['credit'],$account_number) === 0)
                 $credit += $row['amountczk'];
         } else {
-            if ((strpos($row['debit'],'96') === 0) or (strpos($row['credit'],'96') === 0)) {
+            if ((strpos($row['debit'],'96-701') === 0) or (strpos($row['credit'],'96-701') === 0)) {
                 if (strpos($row['debit'],$account_number) === 0)
                     $sdebit += $row['amountczk'];
                 if (strpos($row['credit'],$account_number) === 0)
                     $scredit += $row['amountczk'];
             } else {
-                if (strpos($row['debit'],$account_number) === 0)
-                    $debit += $row['amountczk'];
-                if (strpos($row['credit'],$account_number) === 0)
-                    $credit += $row['amountczk'];
+                if ((strpos($row['debit'],'96-702') === 0) or (strpos($row['credit'],'96-702') === 0) or (strpos($row['debit'],'93') === 0) or (strpos($row['credit'],'93') === 0)) {
+                    // do nothing
+                } else {
+                    if (strpos($row['debit'],$account_number) === 0)
+                        $debit += $row['amountczk'];
+                    if (strpos($row['credit'],$account_number) === 0)
+                        $credit += $row['amountczk'];
+                }
             }
         }
     }
@@ -189,17 +193,23 @@ function n2($n) {
 * find suitable months
 */
 function months() {
-    if (isset($_REQUEST['since'])) {
-        $s = explode('-',$_REQUEST['since']);
-        $start = (int) $s[1];
+    global $year;
+    if ($year == (int) date("Y")) {
+        if (isset($_REQUEST['since'])) {
+            $s = explode('-',$_REQUEST['since']);
+            $start = (int) $s[1];
+        } else {
+            $start = '1';
+        }
+        if (isset($_REQUEST['until'])) {
+            $u = explode('-',$_REQUEST['until']);
+            $end = (int) $u[1];
+        } else {
+            $end = date('n');
+        }
     } else {
         $start = '1';
-    }
-    if (isset($_REQUEST['until'])) {
-        $u = explode('-',$_REQUEST['until']);
-        $end = (int) $u[1];
-    } else {
-        $end = date('n');
+        $end = '12';
     }
     return ['start' => $start, 'end' => $end];
 }
