@@ -86,8 +86,8 @@
                         <tr><td colspan="3"><button type="button" class="btn btn-xs" data-toggle="collapse" data-target="#collapse_monthly_{$j}">{$text['monthly']}</button>
                     <tbody id="collapse_monthly_{$j}" class="collapse out">
                         {foreach $account->months as $month}
-                            <tr><td class="number-column">{number_format($month->credit,2)}
-                                <td class="number-column">{number_format($month->debit,2)}
+                            <tr><td class="number-column">{number_format($month->debit,2)}
+                                <td class="number-column">{number_format($month->credit,2)}
                                 {$m = "month_`$month@key`"}
                                 <td class="third-column">{$text[$m]}
                         {/foreach}
