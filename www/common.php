@@ -68,6 +68,131 @@ function get_journal() {
 }
 
 /**
+* reads ledger into array
+*/
+function get_ledger($filtered, $accounts, $accs) {
+    $data = ['super' => [], 'main' => [], 'analytical' => []];
+    if (isset($_REQUEST['account']) and (isset($accs[trim($_REQUEST['account'])]))) {
+        $data = sort_accounts($data, $filtered, $accs[trim($_REQUEST['account'])], $accs);
+    } else {
+        foreach ($accounts as $account) {
+            $data = sort_accounts($data, $filtered, $account, $accs);
+        }
+    }
+    return $data;
+}
+
+/**
+* reads balance into array
+*/
+function read_balance_profit_loss($what) {
+    global $ysettings;
+    $url = $ysettings->$what;
+    $json = json_decode(file_get_contents($url));
+    $data = [];
+    foreach($json->feed->entry as $row) {
+        $t = '$t';
+        $item = [];
+        foreach ($row as $key => $it) {
+            if (substr($key,0,3) == 'gsx') {
+                $item[substr($key,4)] = trim($row->$key->$t);
+            }
+        }
+        $data[] = $item;
+    }
+    foreach($data as $k=>$item) {
+        $data[$k]['level'] = strlen($data[$k]['code']);
+        $data[$k]['accounts'] = [
+            'full' => [],
+            'positive' => [],
+            'negative' => []
+        ];
+        $data[$k]['value'] = 0;
+        $data[$k]['previous_value'] = 0;
+    }
+    return $data;
+}
+
+/**
+* calculates final
+*/
+function calc_final($d) {
+    return $d['debit'] - $d['credit'] + $d['start'];
+}
+
+
+/**
+* adds codes of accounts to balance
+*/
+function add_codes_balance($ledger, $balance, $code) {
+    foreach($balance as $k=>$item) {
+        foreach($ledger['main'] as $row) {
+            $balance_codes = explode(',', $row['account'][$code]);
+            if ((count($balance_codes) > 1) or (strlen($balance_codes[0]) > 0)) {
+                foreach($balance_codes as $bc) {
+                    if ($item['code'] == substr($bc, 0, strlen($item['code']))) {
+                        // print_r([$item, $row['account'], $bc]);
+                        $last_char = substr($bc, -1);
+                        $final = calc_final($row['sums']);
+                        $previous = $row['sums']['start'];
+                        if (in_array($last_char, ['+','-'])) {
+                            if ($last_char == '+') {
+                                $balance[$k]['accounts']['positive'][] = $row['account']['number'];
+                                if ($final > 0) {
+                                    $balance[$k]['value'] += $final;
+                                }
+                                if ($previous > 0) {
+                                    $balance[$k]['previous_value'] += $previous;
+                                }
+                            } else {
+                                $balance[$k]['accounts']['negative'][] = $row['account']['number'];
+                                if ($final < 0) {
+                                    $balance[$k]['value'] += $final;
+                                }
+                                if ($previous < 0) {
+                                    $balance[$k]['previous_value'] += $previous;
+                                }
+                            }
+                        } else {
+                            $balance[$k]['accounts']['full'][] = $row['account']['number'];
+                            $balance[$k]['value'] += $final;
+                            $balance[$k]['previous_value'] += $previous;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return $balance;
+}
+
+/**
+* gets last and first day
+*/
+function get_days($year, $request) {
+    if (isset($request['until'])) {
+        $until_arr = explode('-', $request['until']);
+        $until = mktime(23, 59, 59, $until_arr[2], $until_arr[1], $until_arr[0]);
+    } else {
+        $until = mktime(23, 59, 59, 12, 31, $year);
+    }
+    if (isset($request['since'])) {
+        $since_arr = explode('-', $request['since']);
+        $since = mktime(0, 0, 0, $since_arr[2], $since_arr[1], $since_arr[0]);
+    } else {
+        $since = mktime(0, 0, 0, 1, 1, $year);
+    }
+    $today = mktime(23, 59, 59, date('m'), date('d'), date('Y'));
+    if ($today < $until) {
+        $until = $today;
+    }
+    return [
+        'since' => $since,
+        'until' => $until
+    ];
+}
+
+/**
 * reads Tags into associative array
 */
 function get_tags() {

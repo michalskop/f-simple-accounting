@@ -1,7 +1,8 @@
 dev
 dev/*
+docs
+www/docs
 webcache
 smarty/templates_c
 www/settings.php
 settings.*
-

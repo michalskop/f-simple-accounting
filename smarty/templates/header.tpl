@@ -15,6 +15,7 @@
       <ul class="nav navbar-nav">
         <li {if ($page == 'ledger')} class="active"{/if}><a href="../ledger/?y={$year}">{$text['ledger']}</a></li>
         <li {if ($page == 'journal')} class="active"{/if}><a href="../journal/?y={$year}">{$text['journal']}</a></li>
+        <li {if ($page == 'financial_statements')} class="active"{/if}><a href="../financial-statements/?y={$year}">{$text['financial_statements']}</a></li>
 
       </ul>
 

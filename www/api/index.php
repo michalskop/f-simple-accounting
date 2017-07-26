@@ -225,19 +225,30 @@ foreach ($accounts as $account) {
 }
 
 if (isset($_REQUEST['page']) and ($_REQUEST['page'] == 'ledger')) { //ledger
-    $data = ['super' => [], 'main' => [], 'analytical' => []];
-    if (isset($_REQUEST['account']) and (isset($accs[trim($_REQUEST['account'])]))) {
-        $data = sort_accounts($data, $filtered, $accs[trim($_REQUEST['account'])], $accs);
+    $data = get_ledger($filtered, $accounts, $accs);
+} else {
+    if (isset($_REQUEST['page']) and ($_REQUEST['page'] == 'balance')) {
+        //balance
+        $ledger = get_ledger($filtered, $accounts, $accs);
+        $balance = read_balance_profit_loss('balance_url');
+        $balance = add_codes_balance($ledger, $balance, 'balancecode');
+        $data = $balance;
+
     } else {
-        foreach ($accounts as $account) {
-            $data = sort_accounts($data, $filtered, $account, $accs);
+        if (isset($_REQUEST['page']) and ($_REQUEST['page'] == 'profit-loss')) {
+            //proft loss
+            $ledger = get_ledger($filtered, $accounts, $accs);
+            $profit_loss = read_balance_profit_loss('profit_loss_url');
+            $profit_loss = add_codes_balance($ledger, $profit_loss, 'profit-losscode');
+            $data = $profit_loss;
+        } else {
+            //journal, default
+            $data = $filtered;
+            foreach ($data as $k => $row) {
+                $data[$k]['debit_name'] = $accs[$row['debit']]['name'];
+                $data[$k]['credit_name'] = $accs[$row['credit']]['name'];
+            }
         }
-    }
-} else { //journal, default
-    $data = $filtered;
-    foreach ($data as $k => $row) {
-        $data[$k]['debit_name'] = $accs[$row['debit']]['name'];
-        $data[$k]['credit_name'] = $accs[$row['credit']]['name'];
     }
 }
 //print_r($data);

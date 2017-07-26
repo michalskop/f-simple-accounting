@@ -4,31 +4,35 @@
 */
 $text = [
     'lang' => 'cs',
-    
+
     'brand' => 'Účetnictví',
     'accounting' => 'Účetnictví',
-    
-    
+
+
     'ledger' => 'Hlavní kniha',
     'journal' => 'Deník',
-    
+    'financial_statements' => 'Účetní závěrka',
+    'balance' => 'Rozvaha',
+    'profit_loss' => 'Výkaz zisku a ztráty',
+    'attachement' => 'Příloha',
+
     'filter' => 'Filtr',
     'filter_explanation' => 'Je použito filtrování:',
-    
+
     'credit' => 'kredit (D)',
     'debit' => 'debit (MD)',
     'descript' => '',
-    
+
     'since' => 'od',
     'until' => 'do',
     'account' => 'účet',
     'tag' => 'tag',
-    
+
     'ex_tag' => 'v4',
     'ex_since' => '2015-01-16',
     'ex_until' => '2015-11-10',
     'ex_account' => '21',
-    
+
     'case_row' => 'řádek',
     'case_date' => 'datum',
     'case_credit' => 'kredit (D)',
@@ -42,11 +46,11 @@ $text = [
     'case_links' => 'linky',
     'case_documentid' => 'číslo dokladu',
     'case_note' => 'poznámka',
-    
+
     'accounts_super' => 'Skupiny účtů',
     'accounts_main' => 'Účty',
     'accounts_analytical' => 'Analytické účty',
-    
+
     'current_state' => 'Konečný stav',
     '1_1' => 'k 1.1.',
 
@@ -56,11 +60,11 @@ $text = [
 
     'og:image' => '',
     'og:url' => '',
-    
+
     'details' => 'Detaily',
     'close' => 'Zavřít',
     'monthly' => 'Po měsících',
-    
+
     'month_1' => 'leden',
     'month_2' => 'únor',
     'month_3' => 'březen',
@@ -73,7 +77,7 @@ $text = [
     'month_10' => 'říjen',
     'month_11' => 'listopad',
     'month_12' => 'prosinec',
-    
+
     'jc_row' => 'Řádek',
     'jc_date' => 'Datum',
     'jc_debit' => 'Debit (MD)',
@@ -87,6 +91,23 @@ $text = [
     'jc_links' => 'Linky',
     'jc_documentid' => 'Číslo dokladu',
     'jc_note' => 'Poznámka',
-    
+
+    'fs_short' => 'Účetní závěrka ve zkráceném rozsahu',
+    'fs_balance_sheet' => 'Rozvaha',
+
+    'bs_short' => 'Rozvaha <small>ve zkráceném rozsahu</small>',
+    'bs_row' => 'Položka',
+    'bs_previous' => 'Minulé účetní období',
+    'bs_actual' => 'Běžné účetní období',
+    'bs_day' => 'Ke dni',
+
+    'pl_short' => 'Výkaz zisku a ztráty <small>ve zkrácené rozsahu</small>',
+    'pl_row' => 'Položka',
+    'pl_value' => 'Hodnota',
+    'pl_day' => 'Ke dni',
+
+    'att_short' => 'Příloha'
+
+
 ];
 ?>
