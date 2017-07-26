@@ -3,8 +3,8 @@
 * common functions
 */
 
-error_reporting(E_ALL);
-//error_reporting(0);
+// error_reporting(E_ALL);
+error_reporting(0);
 
 //get settings
 global $settings;
@@ -43,6 +43,7 @@ $smarty->assign('settings',$settings);
 $smarty->assign('tags',$tags);
 $smarty->assign('ysettings',$ysettings);
 $smarty->assign('year',$year);
+$smarty->assign('_REQUEST', $_REQUEST);
 
 
 /**

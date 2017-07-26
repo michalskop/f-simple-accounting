@@ -60,5 +60,11 @@
                         <input type="hidden" name="y" value="{$year}">
                     </form>
             </div>
-      </div>
+
+        <h2>{$text['financial_statements']}</h2>
+        <div class="col-md-6">
+          <a href="../financial-statements/?y={$year}" class="btn btn-primary btn-lg">{$text['financial_statements']}</a>
+        </div>
+
+    </div>
 {/block}

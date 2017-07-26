@@ -101,7 +101,7 @@ $text = [
     'bs_actual' => 'Běžné účetní období',
     'bs_day' => 'Ke dni',
 
-    'pl_short' => 'Výkaz zisku a ztráty <small>ve zkrácené rozsahu</small>',
+    'pl_short' => 'Výkaz zisku a ztráty <small>ve zkráceném rozsahu</small>',
     'pl_row' => 'Položka',
     'pl_value' => 'Hodnota',
     'pl_day' => 'Ke dni',
