@@ -28,7 +28,7 @@
                     {foreach $data->data as $d}
                         {$val = round($d->value * $d->sign / 1000)}
                         {$size = 1 + (2 - $d->level) / 5}
-                        {$color = 255 - 20 * ($d->level - 1) }
+                        {$color = 255 - 20 * ($d->level - 1)}
                         <tr style='background-color: rgb({$color}, {$color}, {$color});'>
                             <td style='font-size: {$size}em'>{$d->text}
                             <td style='font-size: {$size}em;' class='text-right'>{if $val != 0}{$val}{/if}
